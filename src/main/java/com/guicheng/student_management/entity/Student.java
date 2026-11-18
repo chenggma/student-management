@@ -2,20 +2,20 @@ package com.guicheng.student_management.entity;
 
 import jakarta.persistence.*;
 
-@Entity                               // ① "this class maps to a table"
-@Table(name = "students")                 // ② the table name (see the naming table)
+@Entity
+@Table(name = "students")
 public class Student {
-    @Id                                   // ③ "this is the primary key"
-    @GeneratedValue(strategy = GenerationType.IDENTITY)   // the database numbers it 1, 2, 3...
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name")          // ④ column name: lowercase + underscore
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name")          // ⑤
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email", nullable = false, unique = true)   // required, and no duplicates
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     public Student() {

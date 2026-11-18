@@ -20,25 +20,25 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentDto createStudent(StudentDto studentDto) {
-        Student student = StudentMapper.mapToStudent(studentDto);       // ① DTO → entity
-        Student savedStudent = studentRepository.save(student);         // ② save it
-        return StudentMapper.mapToStudentDto(savedStudent);              // ③ entity → DTO
+        Student student = StudentMapper.mapToStudent(studentDto);
+        Student savedStudent = studentRepository.save(student);
+        return StudentMapper.mapToStudentDto(savedStudent);
     }
 
     @Override
     public StudentDto getStudentById(Long studentId) {
-        Student student = studentRepository.findById(studentId)          // ① find by id → returns Optional
-                .orElseThrow(() -> new ResourceNotFoundException(          // ② your exception class
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new ResourceNotFoundException(
                         "Student does not exist with given id: " + studentId));
-        return StudentMapper.mapToStudentDto(student);                    // ③ entity → DTO
+        return StudentMapper.mapToStudentDto(student);
     }
 
     @Override
     public List<StudentDto> getAllStudents() {
-        List<Student> students = studentRepository.findAll();     // ① get all from the database
-        return students.stream()                                   // ② turn it into a stream
-                .map(StudentMapper::mapToStudentDto)              // ③ how to convert one Student
-                .toList();                                         // ④ collect back into a List
+        List<Student> students = studentRepository.findAll();
+        return students.stream()
+                .map(StudentMapper::mapToStudentDto)
+                .toList();
     }
 
     @Override
