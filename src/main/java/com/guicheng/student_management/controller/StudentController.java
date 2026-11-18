@@ -18,14 +18,4 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping("/students")
-    public List<Student> getStudents() {
-        return studentService.getStudents();
-    }
-
-    @GetMapping("/students/{id}")
-    public Student getStudent(@PathVariable int id) {
-        return studentService.getStudentById(id);
-    }
-
 }
