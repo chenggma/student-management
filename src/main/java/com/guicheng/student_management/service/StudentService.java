@@ -19,4 +19,13 @@ public class StudentService {
     public List<Student> getStudents() {
         return students;
     }
+
+    public Student getStudentById(int id) {
+        for (Student student : students) {
+            if (student.getId() == id) {
+                return student;
+            }
+        }
+        return null;
+    }
 }
